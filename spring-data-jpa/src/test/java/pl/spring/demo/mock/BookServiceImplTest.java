@@ -1,23 +1,32 @@
 package pl.spring.demo.mock;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
 import pl.spring.demo.dao.BookDao;
+import pl.spring.demo.mapper.BookTypeMapper;
 import pl.spring.demo.service.impl.BookServiceImpl;
+import pl.spring.demo.to.AuthorTo;
+import pl.spring.demo.to.BookEntity;
 import pl.spring.demo.to.BookTo;
-
-import static org.junit.Assert.assertEquals;
-
+//@RunWith(MockitoJUnitRunner.class)
 public class BookServiceImplTest {
 
     @InjectMocks
     private BookServiceImpl bookService;
     @Mock
     private BookDao bookDao;
+    @Mock
+    private BookTypeMapper mapper;
 
     @Before
     public void setUp() {
@@ -25,14 +34,17 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void testShouldSaveBook() {
-        // given
-        BookTo book = new BookTo(null, "title", "author");
-        Mockito.when(bookDao.save(book)).thenReturn(new BookTo(1L, "title", "author"));
+    public void testShouldSaveBook() {	
+    	 // given
+        BookEntity book = new BookEntity(null, "title", new ArrayList<AuthorTo>(Arrays.asList(new AuthorTo(1, "author", "author"))));
+        BookTo bookTo = new BookTo(null, "title", "author");
+        Mockito.when(bookDao.save(book)).thenReturn(book);
+        Mockito.when(mapper.mapBookTypeToEntity(bookTo)).thenReturn(book);
+        Mockito.when(mapper.mapBookTypeEntityTo(book)).thenReturn(bookTo);
         // when
-        BookTo result = bookService.saveBook(book);
+        BookTo result = bookService.saveBook(bookTo);
         // then
         Mockito.verify(bookDao).save(book);
-        assertEquals(1L, result.getId().longValue());
+        assertEquals("author", result.getAuthors());
     }
 }
