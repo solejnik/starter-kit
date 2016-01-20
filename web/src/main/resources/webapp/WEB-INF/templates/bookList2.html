@@ -18,10 +18,8 @@
 			<td th:text="${book.authors}">title</td>
 			<td>
 				<form method="post"
-					action="http://localhost:9721/workshop/books">
+					action="http://localhost:9721/workshop/dell-book-by-id">
 					<input type="hidden" name="id" th:value="${book.id}" />
-					<input type="hidden" name="title" th:value="${book.title}" />
-					<input type="hidden" name="authors" th:value="${book.authors}" />
 					<button type="submit">delete</button>
 				</form>
 			</td>
