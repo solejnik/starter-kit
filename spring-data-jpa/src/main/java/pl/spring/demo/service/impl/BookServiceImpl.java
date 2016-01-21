@@ -53,4 +53,11 @@ public class BookServiceImpl implements BookService {
 	public BookTo findById(Long id) {
 		return BookMapper.map(bookRepository.getOne(id));
 	}
+
+	@Override
+	public void updateBook(BookTo book) {
+		 bookRepository.updateBook(book.getId(), book.getTitle(), book.getAuthors());
+	}
+	
+
 }

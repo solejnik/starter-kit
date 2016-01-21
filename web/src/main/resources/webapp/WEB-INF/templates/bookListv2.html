@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8" />
+<title>Lista książek</title>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	media="all" />
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+	media="all" />
+<link rel="stylesheet" th:href="@{/static/application.css}"
+	href="/static/application.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body>
+	<script type="text/javascript">
+		function myfun(message) {
+			document.getElementById('tekst').innerHTML = message;
+		}
+
+		$(document).ready(function() {
+			$('#diw button').click(function() {
+				$(this).parent().parent().parent().remove();
+			});
+		});
+	</script>
+	<h1>Books</h1>
+	<div id="diw">
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Authors</th>
+				<th>Action</th>
+			</tr>
+
+			<tr id="myTable" th:each="book : ${books}">
+				<td th:text="${book.id}">title</td>
+				<td th:text="${book.title}">title</td>
+				<td th:text="${book.authors}">title</td>
+				<td>
+					<div>
+					<input type="hidden" name="id" th:value="${book.id}" /> 
+					<input type="hidden" name="title" th:value="${book.title}" /> 
+					<input type="hidden" name="authors" th:value="${book.authors}" />
+						<button
+							onclick="deleteBook($(this).parent().children().get(0).value,$(this).parent().children().get(1).value,$(this).parent().children().get(2).value);myfun('Książka o tytule '+$(this).parent().children().get(1).value+' została usunięta');"
+							type="button" class="btn btn-danger" data-toggle="modal"
+							data-target="#myModal">Delete!</button>
+					</div>
+				</td>
+			</tr>
+
+		</table>
+	</div>
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Modal Header</h4>
+					</div>
+					<div class="modal-body">
+						<p id="tekst">Some text in the modal.</p>
+					</div>
+					<div class="modal-footer"></div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+ 	<script type="text/javascript">
+		$(document).ready(function() {
+			console.log("ready!");
+		});
+		function deleteBook(bookId, bookTitle, bookAuthors) {
+			data = {
+				"id" : parseInt(bookId),
+				"title" : bookTitle,
+				"authors" : bookAuthors
+			};
+
+			$.ajax({
+				type : "DELETE",
+				url : "/workshop/book",
+				data : JSON.stringify(data),
+				contentType : "application/json; charset=utf-8",
+				dataType : "json",
+			});
+		}
+</script>
+</body>
+</html>

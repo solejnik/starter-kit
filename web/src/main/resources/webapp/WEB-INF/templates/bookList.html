@@ -3,29 +3,41 @@
 <head lang="en">
 <meta charset="UTF-8" />
 <title>Lista książek</title>
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	media="all" />
+<link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+	media="all" />
+<link rel="stylesheet" th:href="@{/static/application.css}"
+	href="/static/application.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>Authors</th>
-			<th>Action</th>
-		</tr>
-		<tr th:each="book : ${books}">
-			<td th:text="${book.id}">title</td>
-			<td th:text="${book.title}">title</td>
-			<td th:text="${book.authors}">title</td>
-			<td>
-				<form method="post"
-					action="http://localhost:9721/workshop/books">
-					<input type="hidden" name="id" th:value="${book.id}" />
-					<input type="hidden" name="title" th:value="${book.title}" />
-					<input type="hidden" name="authors" th:value="${book.authors}" />
-					<button type="submit">delete</button>
-				</form>
-			</td>
-		</tr>
-	</table>
+	<h1>Books</h1>
+	<div id="diw">
+		<table class="table table-hover table-bordered">
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Authors</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="book : ${books}">
+				<td th:text="${book.id}">title</td>
+				<td th:text="${book.title}">title</td>
+				<td th:text="${book.authors}">title</td>
+				<td>
+					<form method="post" action="http://localhost:9721/workshop/books">
+						<input type="hidden" name="id" th:value="${book.id}" /> <input
+							type="hidden" name="title" th:value="${book.title}" /> <input
+							type="hidden" name="authors" th:value="${book.authors}" />
+						<button type="submit" class="btn btn-danger ">delete</button>
+					</form>
+				</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

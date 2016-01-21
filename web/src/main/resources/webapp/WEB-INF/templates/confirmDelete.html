@@ -3,18 +3,19 @@
 <head lang="en">
 <meta charset="UTF-8" />
 <title>Pierwsza strona</title>
-<link rel="stylesheet" th:href="@{/static/application.css}"
-	href="/static/application.css" />
-<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" media="all" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" media="all" />
+ <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
 	
 </head>
 <body>
 <script>
 
 </script>
-	<p class="sample" th:inline="text">Książka o tytule
-		"[[${book.title}]]" została usunięta.</p>
-	<button border="1" onclick="window.location.href='http://localhost:9721/workshop/books'">back</button>
+		<h3><span th:inline="text" class = "label label-info">Książka o tytule
+		"[[${book.title}]]" została usunięta.</span></h3>
+	<button class = "btn btn-primary" border="10" onclick="window.location.href='http://localhost:9721/workshop/books'">back</button>
 
 </body>
 </html>

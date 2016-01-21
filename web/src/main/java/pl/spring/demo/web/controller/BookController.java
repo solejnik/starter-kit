@@ -23,6 +23,13 @@ public class BookController {
 		params.put("books", allBooks);
 		return "bookList";
 	}
+	
+	@RequestMapping(value = "/booksv2", method = RequestMethod.GET)
+	public String bookListv2(Map<String, Object> params) {
+		final List<BookTo> allBooks = bookService.findAllBooks();
+		params.put("books", allBooks);
+		return "bookListv2";
+	}
 
 	@RequestMapping(value = "/books", method = {RequestMethod.POST})
 	public String findBooksByTitle(Map<String, Object> params, @RequestParam("id") Long id,@RequestParam("title") String title,@RequestParam("authors") String authors) {
