@@ -1,9 +1,22 @@
 package pl.spring.demo.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import pl.spring.demo.entity.LibraryEntity;
 
 @Entity
 @Table(name = "BOOK")
@@ -15,13 +28,16 @@ public class BookEntity implements Serializable {
     private String title;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "BOOK_AUTHOR",
+    @JoinTable(
+    		name = "BOOK_AUTHOR",
             joinColumns = {@JoinColumn(name = "BOOK_ID", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false)}
     )
     private Set<AuthorEntity> authors = new HashSet<>();
-
-    // for hibernate
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private LibraryEntity library;
+	// for hibernate
     protected BookEntity() {
 }
 
@@ -53,4 +69,14 @@ public class BookEntity implements Serializable {
     public void setAuthors(Set<AuthorEntity> authors) {
         this.authors = authors;
     }
+
+	public LibraryEntity getLibraryEntity() {
+		return library;
+	}
+
+	public void setLibraryEntity(LibraryEntity libraryEntity) {
+		this.library = libraryEntity;
+	}
+ 
+    
 }
