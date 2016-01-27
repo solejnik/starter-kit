@@ -1,23 +1,25 @@
 package pl.spring.demo.repository;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import pl.spring.demo.entity.BookEntity;
 import pl.spring.demo.entity.LibraryEntity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "CommonRepositoryTest-context.xml")
+@TransactionConfiguration(defaultRollback = true)
+@Transactional
 public class LibraryRepositoryTest {
 
     @Autowired
@@ -45,14 +47,6 @@ public class LibraryRepositoryTest {
     	amountOfBooksAfterDeleteFirsLibrary = bookRepository.findAll().size();
     	// then
     	assertEquals(expectedAmountOfBooksAfterDeleteFirsLibrary, amountOfBooksAfterDeleteFirsLibrary);
-    }
-    
-    @Test
-    public void testShouldFind() {
-    	// given
-    	BookEntity book = bookRepository.findOne(3l);
-    	// when
-    	// then
     }
 
 //    @Test

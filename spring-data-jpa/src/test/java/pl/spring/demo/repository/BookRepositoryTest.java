@@ -3,7 +3,10 @@ package pl.spring.demo.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -13,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import pl.spring.demo.entity.AuthorEntity;
 import pl.spring.demo.entity.BookEntity;
-import pl.spring.demo.entity.LibraryEntity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "CommonRepositoryTest-context.xml")
@@ -68,5 +71,17 @@ public class BookRepositoryTest {
         assertNotNull(booksEntity);
         assertFalse(booksEntity.isEmpty());
         assertEquals("Pierwsza książka", booksEntity.get(0).getTitle());
+    }
+    
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public void testShouldThrowDataIntegrityViolationException() {
+    	// given
+    	Set<AuthorEntity> authors = new HashSet<AuthorEntity>(Arrays.asList(new AuthorEntity("Max", "Iksiński")));
+    	BookEntity booksEntity = new BookEntity(4l, "Czwarta Książka");
+    	booksEntity.setAuthors(authors);
+    	// when
+    	bookRepository.save(booksEntity);
+    	// then
+    	fail("test should throw DataIntegrityViolationException");
     }
 }
