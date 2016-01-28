@@ -40,7 +40,7 @@ public class LibraryRepositoryTest {
     @Test
     public void testShouldFindOneBookAfterDeleteFirstLibrary() {
     	// given
-    	final int expectedAmountOfBooksAfterDeleteFirsLibrary = 1;
+    	final int expectedAmountOfBooksAfterDeleteFirsLibrary = 2;
     	int amountOfBooksAfterDeleteFirsLibrary;
     	// when
     	libraryRepository.delete(1l);

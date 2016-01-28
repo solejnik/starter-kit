@@ -65,7 +65,7 @@ public class BookServiceImplTest {
 		assertFalse(booksAfterSearchByCriteria.isEmpty());
 		assertEquals(1, booksAfterSearchByCriteria.size());
 		assertEquals("Trzecia książka", booksAfterSearchByCriteria.get(0).getTitle());
-		assertEquals("Janusz Jankowski", booksAfterSearchByCriteria.get(0).getAuthors());
+		assertEquals("Jan Kowalski", booksAfterSearchByCriteria.get(0).getAuthors());
 	}
 	
 	@Test
@@ -108,7 +108,7 @@ public class BookServiceImplTest {
 		// then
 		assertNotNull(booksAfterSearchByCriteria);
 		assertFalse(booksAfterSearchByCriteria.isEmpty());
-		assertEquals(2, booksAfterSearchByCriteria.size());
+		assertEquals(3, booksAfterSearchByCriteria.size());
 		assertEquals("Pierwsza książka", booksAfterSearchByCriteria.get(0).getTitle());
 		assertEquals("Jan Kowalski", booksAfterSearchByCriteria.get(0).getAuthors());
 	}
@@ -123,9 +123,9 @@ public class BookServiceImplTest {
 		// then
 		assertNotNull(booksAfterSearchByCriteria);
 		assertFalse(booksAfterSearchByCriteria.isEmpty());
-		assertEquals(1, booksAfterSearchByCriteria.size());
+		assertEquals(2, booksAfterSearchByCriteria.size());
 		assertEquals("Trzecia książka", booksAfterSearchByCriteria.get(0).getTitle());
-		assertEquals("Janusz Jankowski", booksAfterSearchByCriteria.get(0).getAuthors());
+		assertEquals("Jan Kowalski", booksAfterSearchByCriteria.get(0).getAuthors());
 	}
 	
 	@Test
@@ -138,7 +138,7 @@ public class BookServiceImplTest {
 		// then
 		assertNotNull(booksAfterSearchByCriteria);
 		assertFalse(booksAfterSearchByCriteria.isEmpty());
-		assertEquals(3, booksAfterSearchByCriteria.size());
+		assertEquals(4, booksAfterSearchByCriteria.size());
 	}
 
 }

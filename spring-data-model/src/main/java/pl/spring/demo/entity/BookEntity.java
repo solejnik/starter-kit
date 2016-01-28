@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import pl.spring.demo.entity.LibraryEntity;
 
 @Entity
 @Table(name = "BOOK")
@@ -27,7 +25,7 @@ public class BookEntity implements Serializable {
     @Column(nullable = false, length = 50)
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
     		name = "BOOK_AUTHOR",
             joinColumns = {@JoinColumn(name = "BOOK_ID", nullable = false, updatable = false)},
