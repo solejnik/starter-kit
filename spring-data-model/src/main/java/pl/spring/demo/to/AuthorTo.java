@@ -1,7 +1,7 @@
 package pl.spring.demo.to;
 
 public class AuthorTo {
-	private long id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 

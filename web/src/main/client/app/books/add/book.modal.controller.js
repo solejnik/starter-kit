@@ -1,4 +1,4 @@
-angular.module('app.books').controller('BookModalController', function ($scope, bookService, Flash, $modal) {
+angular.module('app.books').controller('BookModalController', function ($scope,bookRestService, bookService, Flash, $modal) {
     'use strict';
     $scope.authorFirstName = '';
     $scope.authorLastName = '';
@@ -10,6 +10,7 @@ angular.module('app.books').controller('BookModalController', function ($scope, 
 //    	 {
 //    			 "title":$scope.title,"authors":[{"firstName":$scope.authors.split(" ")[0],"lastName":$scope.authors.split(" ")[1]}]		 
 //    	 }
+//    	 bookRestService.updateAuthor($scope.bookTo.authors[0]);
          bookService.addBook($scope.bookTo).then(function (response) {
              angular.copy(response.data, $scope.books);
          }, function () {
