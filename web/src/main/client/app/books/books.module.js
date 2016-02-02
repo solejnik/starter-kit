@@ -8,4 +8,5 @@ angular.module('app.books', ['ngRoute', 'app.main', 'ui.bootstrap', 'flash']).co
     $routeProvider.when('/books/add-book', {
         templateUrl: 'books/add/add-book.html'
     });
+    //
 });

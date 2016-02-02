@@ -1,13 +1,25 @@
 <div>
-    <form novalidate>
-        <div class="modal-header">
-            <h3 class="modal-title">Sample</h3>
-        </div>
-        <div class="modal-body">
-            <p>TEST</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-warning" ng-click="$dismiss()">Close</button>
-        </div>
-    </form>
+	<form novalidate name="myForm">
+		<div class="modal-header">
+			<h3 class="modal-title">Sample</h3>
+		</div>
+		<div class="modal-body">
+			<input type="text" name="input" placeholder="Przykladowy tytul" ng-model="bookTo.title" required>
+			<input type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
+			<input type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
+<!-- 			<input type="text" name="input" ng-model="example.text"  required> -->
+			<button ng-click="addBook()" class="btn btn-success">Save</button>
+			<button ng-click="addAuthors()" class="btn btn-success">More Authors</button>
+				<div role="alert">
+					<span class="error" ng-show="myForm.aFname.$error.required">
+						Insert Author First Name!</span>
+					<span class="error" ng-show="myForm.aLname.$error.required">
+						Insert Author Last Name!</span>
+				</div>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-warning" ng-click="$dismiss()">Close</button>
+		</div>
+	</form>
+		{{bookTo | json}}
 </div>

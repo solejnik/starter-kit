@@ -1,0 +1,16 @@
+<div id = "author-add-modal">
+	<form i novalidate name="myForm">
+		<div class="modal-header">
+			<h3 class="modal-title">Sample</h3>
+		</div>
+		<div class="modal-body">
+			<input type="text" name="aFname" placeholder="imie" ng-model="author.firstName" required>
+			<input type="text" name="aLname" placeholder="nazwisko" ng-model="author.lastName" required>
+			<button ng-click="addAuthor()" class="btn btn-success">Save</button>
+		</div>
+		<div class="modal-footer">
+			<button  class="btn btn-warning" ng-click="closeMyPopup()">Close</button>
+		</div>
+	</form>
+		{{author | json}}
+</div>

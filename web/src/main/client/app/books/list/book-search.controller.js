@@ -3,6 +3,7 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
 
     $scope.books = [];
     $scope.prefix = '';
+    $scope.bookTitle = '';
     $scope.gridOptions = { data: 'books' };
 
     var removeBookById = function (bookId) {
@@ -33,8 +34,21 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
         $modal.open({
             templateUrl: 'books/add/add-book-modal.html',
             controller: 'BookModalController',
-            size: 'lg'
+            size: 'lg',
         });
+    };
+    
+    $scope.editBook = function (bookTitle) {
+    	var modalInstance = $modal.open({
+    		templateUrl: 'books/edit/edit-book-modal.html',
+    		controller: 'EditBookModalController',
+    		size: 'lg',
+    		resolve: {
+                bookTitle: function () {
+                  return bookTitle;
+                }
+              }
+    	});
     };
 
 });
