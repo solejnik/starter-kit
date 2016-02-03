@@ -12,7 +12,7 @@ angular.module('app.books').factory('bookService', function (bookRestService) {
             return bookRestService.addBook(bookTo);
         },
         updateBook: function (bookTo) {
-        	return bookRestService.addBook(bookTo);
+            return bookRestService.updateBook(bookTo);
         }
     };
 });

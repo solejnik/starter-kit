@@ -47,10 +47,5 @@ public class BookRestService {
     public void deleteBook(@PathVariable("id") long id) {
         bookService.deleteBook(id);
     }
-    
-//    @RequestMapping(value = "/book/{title}", method = RequestMethod.POST)
-//    public void addBook(@PathVariable("title") String title) {
-//    	BookTo book = new BookTo(null,title,new ArrayList<>(Arrays.asList(new AuthorTo(1l, "stefan", "batory"))));
-//    	bookService.saveBook(book);
-//    }
+
 }

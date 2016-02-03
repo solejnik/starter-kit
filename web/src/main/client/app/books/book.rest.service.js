@@ -12,7 +12,7 @@ angular.module('app.books').factory('bookRestService', function ($http, currentC
             return $http.post(currentContextPath.get() + 'services/books/book/', bookTo);
         },
         updateBook: function (bookTo) {
-        	return $http.put(currentContextPath.get() + 'services/books/book/', bookTo);
+            return $http.post(currentContextPath.get() + 'services/books/book/', bookTo);
         }
     };
 });

@@ -43,17 +43,18 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
     };
     
     $scope.editBook = function (book) {
-    	var modalInstance = $modal.open({
+        var modalInstance = $modal.open({
             templateUrl: 'books/edit/edit-book-modal.html',
             controller: 'EditBookModalController',
             size: 'lg',
             resolve: {
-            	book: function () {
+                book: function () {
                   return book;
                 }
               }
         });
- 
+        modalInstance.result.then(function(){
+        });
     };
 
 });

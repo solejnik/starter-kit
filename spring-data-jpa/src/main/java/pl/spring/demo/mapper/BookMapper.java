@@ -7,6 +7,7 @@ import pl.spring.demo.to.BookTo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BookMapper {
@@ -14,7 +15,11 @@ public static void main(String args[]){
 }
     public static BookTo map(BookEntity bookEntity) {
         if (bookEntity != null) {
-            return new BookTo(bookEntity.getId(), bookEntity.getTitle(), AuthorMapper.map2To(new ArrayList<AuthorEntity>(bookEntity.getAuthors())));
+        	List<AuthorEntity> authorsList = new ArrayList<AuthorEntity>();
+            Set<AuthorEntity> authors = bookEntity.getAuthors();
+            AuthorEntity next = authors.iterator().next();
+            authorsList.addAll(authors);
+			return new BookTo(bookEntity.getId(), bookEntity.getTitle(), AuthorMapper.map2To(authorsList));
         }
         return null;
     }
