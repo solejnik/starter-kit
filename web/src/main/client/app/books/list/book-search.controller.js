@@ -31,15 +31,19 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
     };
 
     $scope.addBook = function () {
-        $modal.open({
+        var modalInstance = $modal.open({
             templateUrl: 'books/add/add-book-modal.html',
             controller: 'BookModalController',
-            size: 'lg',
+            size: 'lg'
         });
+        
+        modalInstance.result.then(function(book){
+        	$scope.books.push(book);
+       });
     };
     
     $scope.editBook = function (bookTitle,bookId) {
-    	var modalInstance = $modal.open({
+    	$modal.open({
     		templateUrl: 'books/edit/edit-book-modal.html',
     		controller: 'EditBookModalController',
     		size: 'lg',

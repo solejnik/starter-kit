@@ -5,16 +5,15 @@
 		</div>
 		<div class="modal-body">
 			<input type="text" name="input" placeholder="Przykladowy tytul" ng-model="bookTo.title" required>
-			<input type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
-			<input type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
-<!-- 			<input type="text" name="input" ng-model="example.text"  required> -->
-			<button ng-click="addBook()" class="btn btn-success">Save</button>
-			<button ng-click="addAuthors()" class="btn btn-success">More Authors</button>
+			<input id = "aFnameM" type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
+			<input id = "aLnameM" type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
+			<button ng-disabled="valid()" ng-click="addBook() && $dismiss()" class="btn btn-success">Zapisz</button>
+			<button ng-click="addAuthors()" class="btn btn-success">Wiecej autorow</button>
 				<div role="alert">
 					<span class="error" ng-show="myForm.aFname.$error.required">
-						Insert Author First Name!</span>
+						Wprowadz imie autora!</span>
 					<span class="error" ng-show="myForm.aLname.$error.required">
-						Insert Author Last Name!</span>
+						Wprowadz nazwisko autora!</span>
 				</div>
 		</div>
 		<div class="modal-footer">

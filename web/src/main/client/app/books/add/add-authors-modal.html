@@ -1,15 +1,15 @@
 <div id = "author-add-modal">
-	<form i novalidate name="myForm">
+	<form  novalidate name="myForm">
 		<div class="modal-header">
 			<h3 class="modal-title">Sample</h3>
 		</div>
 		<div class="modal-body">
-			<input type="text" name="aFname" placeholder="imie" ng-model="author.firstName" required>
-			<input type="text" name="aLname" placeholder="nazwisko" ng-model="author.lastName" required>
-			<button ng-click="addAuthor()" class="btn btn-success">Save</button>
+			<input type="text" id = "aFname" name="aFname" placeholder="imie" ng-model="author.firstName" required>
+			<input type="text" id = "aLname" name="aLname" placeholder="nazwisko" ng-model="author.lastName" required>
+			<button ng-disabled="valid()" ng-click = "closeMyModal()" class="btn btn-success">Dodaj</button>
 		</div>
 		<div class="modal-footer">
-			<button  class="btn btn-warning" ng-click="closeMyPopup()">Close</button>
+			<button  class="btn btn-warning" ng-click="$dismiss()">Close</button>
 		</div>
 	</form>
 		{{author | json}}
