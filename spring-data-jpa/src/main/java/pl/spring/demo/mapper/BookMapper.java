@@ -6,6 +6,7 @@ import pl.spring.demo.to.BookTo;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -26,7 +27,10 @@ public static void main(String args[]){
 
     public static BookEntity map(BookTo bookTo) {
         if (bookTo != null) {
-            return new BookEntity(bookTo.getId(), bookTo.getTitle());
+        	List<AuthorEntity> authorsList = AuthorMapper.map2Entity(bookTo.getAuthors());
+        	Set<AuthorEntity> authorsListSet = new HashSet<AuthorEntity>();
+        	authorsListSet.addAll(authorsList);
+            return new BookEntity(bookTo.getId(), bookTo.getTitle(),authorsListSet );
         }
         return null;
     }
