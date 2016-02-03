@@ -36,6 +36,11 @@ public class BookRestService {
     public BookTo saveBook(@RequestBody BookTo book) {
         return bookService.saveBook(book);
     }
+    
+    @RequestMapping(value = "/book", method = {RequestMethod.PUT})
+    public BookTo editBook(@RequestBody BookTo book) {
+    	return bookService.saveBook(book);
+    }
 	
 
     @RequestMapping(value = "/book/{id}", method = RequestMethod.DELETE)

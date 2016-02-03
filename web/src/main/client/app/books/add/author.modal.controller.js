@@ -1,6 +1,6 @@
 angular.module('app.books').controller(
 		'AuthorModalController',
-		function($scope, bookService, Flash, $modal, $modalInstance) {
+		function($scope, bookService, Flash, $modal, $modalInstance,$window) {
 			'use strict';
 			$scope.authorFirstName = '';
 			$scope.authorLastName = '';
@@ -10,8 +10,8 @@ angular.module('app.books').controller(
 			};
 
 			$scope.valid = function() {
-				if ((jQuery('#aFname').val() == '')
-						|| (jQuery('#aLname').val() == '')) {
+				if (($window.jQuery('#aFname').val() == '')
+						|| ($window.jQuery('#aLname').val() == '')) {
 					return true;
 				} else {
 					return false;

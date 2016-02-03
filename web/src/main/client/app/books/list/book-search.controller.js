@@ -38,24 +38,22 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
         });
         
         modalInstance.result.then(function(book){
-        	$scope.books.push(book);
+             $scope.books.push(book);
        });
     };
     
-    $scope.editBook = function (bookTitle,bookId) {
-    	$modal.open({
-    		templateUrl: 'books/edit/edit-book-modal.html',
-    		controller: 'EditBookModalController',
-    		size: 'lg',
-    		resolve: {
-                bookTitle: function () {
-                  return bookTitle;
-                },
-                bookId: function () {
-                    return bookId;
-                  }
+    $scope.editBook = function (book) {
+    	var modalInstance = $modal.open({
+            templateUrl: 'books/edit/edit-book-modal.html',
+            controller: 'EditBookModalController',
+            size: 'lg',
+            resolve: {
+            	book: function () {
+                  return book;
+                }
               }
-    	});
+        });
+ 
     };
 
 });

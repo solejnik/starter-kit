@@ -9,10 +9,10 @@ angular.module('app.books').factory('bookRestService', function ($http, currentC
             return $http.delete(currentContextPath.get() + 'services/books/book/' + bookId);
         },
         addBook: function (bookTo) {
-        	return $http.post(currentContextPath.get() + 'services/books/book/', bookTo);
+            return $http.post(currentContextPath.get() + 'services/books/book/', bookTo);
         },
-        updateAuthor: function (authorTo) {
-        	return $http.post(currentContextPath.get() + 'services/authors/author/', authorTo);
+        updateBook: function (bookTo) {
+        	return $http.put(currentContextPath.get() + 'services/books/book/', bookTo);
         }
     };
 });

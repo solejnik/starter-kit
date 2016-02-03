@@ -1,14 +1,14 @@
-angular.module('app.books').controller('BookModalController', function ($scope,bookRestService, bookService, Flash, $modal, $modalInstance) {
+angular.module('app.books').controller('BookModalController', function ($scope,bookRestService, bookService, Flash, $modal, $modalInstance,$window) {
     'use strict';
     $scope.authorFirstName = '';
     $scope.authorLastName = '';
     $scope.bookTo =  {
-			 "title":"","authors":[]		 
-	 				}	
+             'title':'','authors':[]		 
+                  };
     $scope.addBook = function () {
          bookService.addBook($scope.bookTo).then(function (response) {
-        	 $modalInstance.close(response.data);
-        	 Flash.create('success', 'Książka została dodana.', 'custom-class');
+             $modalInstance.close(response.data);
+             Flash.create('success', 'Książka została dodana.', 'custom-class');
          }, function () {
              Flash.create('danger', 'Wyjątek', 'custom-class');
          });
@@ -22,18 +22,18 @@ angular.module('app.books').controller('BookModalController', function ($scope,b
         });
         
         modalInstance.result.then(function(author){
-        	$scope.bookTo.authors.push(author);
+            $scope.bookTo.authors.push(author);
        });
         
     };
     
     $scope.valid = function () {
-    	if(($('#aFnameM').val()=='')||($('#aLnameM').val()=='')){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
+        if(($window.jQuery('#aFnameM').val()=='')||($window.jQuery('#aLnameM').val()=='')){
+            return true;
+        }
+        else{
+            return false;
+        }
     };
 
 });

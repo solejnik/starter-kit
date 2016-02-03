@@ -1,5 +1,11 @@
-angular.module('app.books').controller('EditBookModalController', function ($scope, bookService, Flash, $modal,bookTitle, bookId) {
+angular.module('app.books').controller('EditBookModalController', function ($scope, bookService, Flash, $modal,book, $modalInstance) {
     'use strict';
-    $scope.title = bookTitle;
-    $scope.id = bookId;
+    $scope.book = book;
+    $scope.title = $scope.book.title;
+    	
+    $scope.updateTitle = function () {
+    	$scope.book.title = $scope.title;
+    	bookService.addBook($scope.book);
+    }
+
 });
