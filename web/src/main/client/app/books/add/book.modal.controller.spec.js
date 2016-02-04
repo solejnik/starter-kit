@@ -1,4 +1,4 @@
-describe('edit book modal controller', function () {
+describe('book modal controller', function () {
     'use strict';
 
     beforeEach(function () {
@@ -17,23 +17,23 @@ describe('edit book modal controller', function () {
                 then : jasmine.createSpy('modalInstance.result.then')
             }
         };
-        var someBook = {title:'123'};
-        controller = $controller('EditBookModalController', {
-            $scope : $scope, $modalInstance : modalInstance, bookService : bookService, book : someBook
+
+        controller = $controller('BookModalController', {
+            $scope : $scope, $modalInstance : modalInstance, bookService : bookService
         });
     }));
 
-    it('updateTitle should call bookService updateBook', inject(function($q, bookService) {
+    it('addBook should call bookService addBook', inject(function($q, bookService) {
         // given
         $scope.$close = jasmine.createSpy('$close');
         var addDeferred = $q.defer();
-        var result = {title:'123'};
-        spyOn(bookService, 'updateBook').and.returnValue(addDeferred.promise);
+        var result = {title : '', 'authors': [] };
+        spyOn(bookService, 'addBook').and.returnValue(addDeferred.promise);
         // when
-        $scope.updateTitle();
+        $scope.addBook();
         $scope.$digest();
         // then
-        expect(bookService.updateBook).toHaveBeenCalledWith(result);
+        expect(bookService.addBook).toHaveBeenCalledWith(result);
     }));
 
     

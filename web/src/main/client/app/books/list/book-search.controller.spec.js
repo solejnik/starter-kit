@@ -49,7 +49,7 @@ describe('book controller', function () {
     
     it('search should call bookService.search', inject(function ($controller, $q, bookService, Flash) {
     	// given
-    	var result = {'data':[{'id':1,'title':'Pierwsza książka', 'authors':[{ 'id':1, 'firstName':'First', 'lastName':'Last'}]}]};
+    	var result = {};
     	var titlePrefix = 'druga';
     	var searchDeferred = $q.defer();
     	spyOn($bookService, 'search').and.returnValue(searchDeferred.promise);
@@ -74,6 +74,42 @@ describe('book controller', function () {
     	// then
     	expect($bookService.search).toHaveBeenCalled();
         expect($Flash.create).toHaveBeenCalledWith('danger', 'Wyjątek', 'custom-class');
+    }));
+
+    it('add book should open modal', inject(function($modal, $q) {
+        //given
+        var modalDeferred = $q.defer();
+        spyOn($modal, 'open').and.returnValue({
+            result : modalDeferred.promise
+        });
+        //when
+        $scope.addBook();
+        //then
+        expect($modal.open).toHaveBeenCalled();
+    }));
+    
+    it('edit book should open modal', inject(function($modal, $q) {
+    	//given
+    	var modalDeferred = $q.defer();
+    	spyOn($modal, 'open').and.returnValue({
+    		result : modalDeferred.promise
+    	});
+    	//when
+    	$scope.editBook();
+    	//then
+    	expect($modal.open).toHaveBeenCalled();
+    }));
+    
+    it('add book should open modal', inject(function($modal, $q) {
+    	//given
+    	var modalDeferred = $q.defer();
+    	spyOn($modal, 'open').and.returnValue({
+    		result : modalDeferred.promise
+    	});
+    	//when
+    	$scope.addBook();
+    	//then
+    	expect($modal.open).toHaveBeenCalled();
     }));
 
 });
