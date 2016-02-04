@@ -36,7 +36,6 @@ angular.module('app.books').controller('BookSearchController', function ($scope,
             controller: 'BookModalController',
             size: 'lg'
         });
-        
         modalInstance.result.then(function(book){
              $scope.books.push(book);
        });
