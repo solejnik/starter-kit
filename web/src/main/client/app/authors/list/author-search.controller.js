@@ -2,8 +2,6 @@ angular.module('app.authors').controller('AuthorSearchController', function ($sc
     'use strict';
 
     $scope.authors = [];
-    $scope.gridOptions = { data: 'authors' };
-
     $scope.search = function () {
         authorService.search().then(function (response) {
             angular.copy(response.data, $scope.authors);
@@ -11,4 +9,5 @@ angular.module('app.authors').controller('AuthorSearchController', function ($sc
             Flash.create('danger', 'Wyjątek', 'custom-class');
         });
     };
+    $scope.search();
 });

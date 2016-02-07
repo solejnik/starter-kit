@@ -24,16 +24,8 @@ angular.module('app.books').controller('BookModalController', function ($scope,b
         modalInstance.result.then(function(author){
             $scope.bookTo.authors.push(author);
        });
-        
+        $window.jQuery();
     };
-    
-    $scope.valid = function () {
-        if(($window.jQuery('#aFnameM').val()=='')||($window.jQuery('#aLnameM').val()=='')){
-            return true;
-        }
-        else{
-            return false;
-        }
-    };
+
 
 });

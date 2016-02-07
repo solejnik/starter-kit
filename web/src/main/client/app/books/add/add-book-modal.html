@@ -1,24 +1,19 @@
 <div>
 	<form novalidate name="myForm">
 		<div class="modal-header">
-			<h3 class="modal-title">Sample</h3>
+			<h3 class="modal-title">Dodawanie książki</h3>
 		</div>
-		<div class="modal-body">
-			<input type="text" name="input" placeholder="Przykladowy tytul" ng-model="bookTo.title" required>
-			<input id = "aFnameM" type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
-			<input id = "aLnameM" type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
-			<button ng-disabled="valid()" ng-click="addBook() && $dismiss()" class="btn btn-success">Zapisz</button>
-			<button ng-click="addAuthors()" class="btn btn-success">Wiecej autorow</button>
-				<div role="alert">
-					<span class="error" ng-show="myForm.aFname.$error.required">
-						Wprowadz imie autora!</span>
-					<span class="error" ng-show="myForm.aLname.$error.required">
-						Wprowadz nazwisko autora!</span>
-				</div>
+		<div class="modal-body asd">
+		<form name="myForm">
+            <input id = "title" type="text" name="input" placeholder="Przykladowy tytul" ng-model="bookTo.title" required>
+            <input id = "aFnameM" type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
+            <input id = "aLnameM" type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
+            <button ng-disabled="myForm.$invalid" ng-click="addBook() && $dismiss()" class="btn btn-success">Zapisz</button>
+            <button ng-disabled="myForm.$invalid"ng-click="addAuthors()" class="btn btn-success">Kolejny autor</button>
+        </form>
 		</div>
 		<div class="modal-footer">
 			<button class="btn btn-warning" ng-click="$dismiss()">Close</button>
 		</div>
 	</form>
-		{{bookTo | json}}
 </div>

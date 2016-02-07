@@ -5,12 +5,10 @@ describe('book controller', function () {
         module('app.authors');
     });
  
-    var $scope;
-    var controller;
-    var $authorService;
-    var $Flash;
+    var $scope,controller,$authorService,$Flash;
     
-    beforeEach(inject(function ($rootScope,$controller, authorService, Flash) {
+    beforeEach(inject(function ($httpBackend,$rootScope,$controller, authorService, Flash) {
+        $httpBackend.whenGET('/context.html/services/authors/allAuthors').respond('');
         $scope = $rootScope.$new();
         $authorService = authorService;
         $Flash = Flash;
@@ -24,14 +22,14 @@ describe('book controller', function () {
         expect($scope.search).toBeDefined();
     }));
 
-    it('search should call authorService.search', inject(function ($controller, $q, authorService, Flash) {
+    it('search should call authorService.search', inject(function ($httpBackend, $controller, $q, authorService, Flash) {
     	// given
     	var result = {'data':[{ 'id':1, 'firstName':'First', 'lastName':'Last'}]};
     	var searchDeferred = $q.defer();
     	spyOn(authorService, 'search').and.returnValue(searchDeferred.promise);
     	// when
-    	searchDeferred.resolve(result);
     	$scope.search();
+    	searchDeferred.resolve(result);
     	$scope.$digest();
     	// then
     	expect(authorService.search).toHaveBeenCalledWith();

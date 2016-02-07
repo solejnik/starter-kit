@@ -5,9 +5,7 @@ describe('edit book modal controller', function () {
         module('app.books');
     });
 
-    var $scope;
-    var modalInstance;
-    var controller;
+    var $scope, modalInstance,controller;
     
     beforeEach(inject(function ($rootScope, $controller, bookService) {
         $scope = $rootScope.$new();
