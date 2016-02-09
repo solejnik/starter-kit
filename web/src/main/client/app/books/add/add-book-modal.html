@@ -8,8 +8,8 @@
             <input id = "title" type="text" name="input" placeholder="Przykladowy tytul" ng-model="bookTo.title" required>
             <input id = "aFnameM" type="text" name="aFname" placeholder="imie" ng-model="bookTo.authors[0].firstName" required>
             <input id = "aLnameM" type="text" name="aLname" placeholder="nazwisko" ng-model="bookTo.authors[0].lastName" required>
-            <button ng-disabled="myForm.$invalid" ng-click="addBook() && $dismiss()" class="btn btn-success">Zapisz</button>
-            <button ng-disabled="myForm.$invalid"ng-click="addAuthors()" class="btn btn-success">Kolejny autor</button>
+            <button id = "saveBookButton" ng-disabled="myForm.$invalid" ng-click="addBook() && $dismiss()" class="btn btn-success">Zapisz</button>
+            <button id = "moreAuthorsButton" ng-disabled="myForm.$invalid"ng-click="addAuthors()" class="btn btn-success">Kolejny autor</button>
         </form>
 		</div>
 		<div class="modal-footer">

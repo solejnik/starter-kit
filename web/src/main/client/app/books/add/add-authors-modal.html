@@ -7,7 +7,7 @@
 		<form name="author">
             <input id = "authorFirstName" type="text" name="aFname" placeholder="imie" ng-model="author.firstName" required>
             <input id = "authorLastName" type="text" name="aLname" placeholder="nazwisko" ng-model="author.lastName" required>
-            <button ng-disabled="author.$invalid" ng-click = "closeMyModal()" class="btn btn-success">Dodaj</button>
+            <button id = "addAnotherAuthorButton" ng-disabled="author.$invalid" ng-click = "closeMyModal()" class="btn btn-success">Dodaj</button>
         </form>
 			
 		</div>
