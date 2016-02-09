@@ -9,6 +9,14 @@ angular.module('app.books').controller(
 				lastName : ''
 			};
 
+			$scope.valid = function() {
+				if (($window.jQuery('#aFname').val() == '')
+						|| ($window.jQuery('#aLname').val() == '')) {
+					return true;
+				} else {
+					return false;
+				}
+			};
 			$scope.closeMyModal = function() {
 				$modalInstance.close($scope.author);
 			};

@@ -30,7 +30,7 @@ public class EmbeddedJetty {
         new EmbeddedJetty().startJetty(DEFAULT_PORT);
     }
 
-    private void startJetty(int port) throws Exception {
+    public void startJetty(int port) throws Exception {
         Server server = new Server(port);
         server.setHandler(getHandlers());
         server.start();
