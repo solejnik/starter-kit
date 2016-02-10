@@ -37,6 +37,7 @@ public class EmbeddedJetty {
         logger.info("Server started at port {}", port);
         server.join();
     }
+    
 
     private static HandlerList getHandlers() throws IOException {
         HandlerList handlers = new HandlerList();
