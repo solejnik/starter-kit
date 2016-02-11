@@ -1,5 +1,7 @@
 package pl.spring.demo.web.selenium.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +20,7 @@ public class BooksPage extends AbstractPageObject {
 	@FindBy(xpath = "//tr[.//td]//button[text()='Usuń']")
 	private WebElement deleteButton;
 	@FindBy(xpath = "//tr[.//td]//button[text()='Edytuj książkę']")
-	private WebElement editBookButton;
+	private List<WebElement> editBookButton;
 	
 	public BooksPage(WebDriver driver) {
 		super(driver);
@@ -43,7 +45,11 @@ public class BooksPage extends AbstractPageObject {
 		System.out.println(size);
 	}
 	
-	public void clickEditBookButton(){
-		editBookButton.click();
+//	public void clickEditBookButton(){
+//		editBookButton.click();
+//	}
+	
+	public Integer countRowsInTable(){
+		return editBookButton.size();
 	}
 }

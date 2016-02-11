@@ -53,12 +53,7 @@ public class BookRestServiceTest {
         final AuthorTo author2 = new AuthorTo(2l,"Author","2");
         final BookTo bookTo1 = new BookTo(1L, bookTitle, Arrays.asList(author1));
         final BookTo bookTo2 = new BookTo(2L, bookTitle, Arrays.asList(author2));
-        File file1 = FileUtils.getFileFromClasspath("classpath:pl/spring/demo/web/json/author1.json");
-        String authorJSON1 = FileUtils.readFileToString(file1);
-        authorJSON1.trim();
-        File file2 = FileUtils.getFileFromClasspath("classpath:pl/spring/demo/web/json/author2.json");
-        String authorJSON2 = FileUtils.readFileToString(file2);
-        authorJSON2.trim();
+
 
         Mockito.when(bookService.findBooksByTitle(bookTitle)).thenReturn(Arrays.asList(bookTo1, bookTo2));
 
@@ -73,11 +68,9 @@ public class BookRestServiceTest {
 
                 .andExpect(jsonPath("[0].id").value(bookTo1.getId().intValue()))
                 .andExpect(jsonPath("[0].title").value(bookTo1.getTitle()))
-//                .andExpect(jsonPath("[0].authors").value(authorJSON1))
 
                 .andExpect(jsonPath("[1].id").value(bookTo2.getId().intValue()))
                 .andExpect(jsonPath("[1].title").value(bookTo2.getTitle()));
-//                .andExpect(jsonPath("[1].authors").value(authorJSON2));
     }
 
     @Test

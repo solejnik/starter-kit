@@ -1,5 +1,9 @@
 package pl.spring.demo.web.selenium;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -13,14 +17,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import pl.spring.demo.web.selenium.pages.HomePage;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
 @RunWith(SeleniumScreenshotJUnit4Runner.class)
 public class AbstractSelenium {
 	private WebDriver driver;
-
 	@Before
 	public void setUp() {
 		FirefoxProfile profile = new FirefoxProfile();

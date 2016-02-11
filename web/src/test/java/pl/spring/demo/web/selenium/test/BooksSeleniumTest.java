@@ -1,7 +1,9 @@
 package pl.spring.demo.web.selenium.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +30,17 @@ public class BooksSeleniumTest extends AbstractSelenium {
 	public void shouldCheckIfBookTitleIsNotRequired() {
 		booksPage.clickSearchBooks();
 		assertFalse(booksPage.hasError());
+	}
+	
+	@Test
+	public void shouldCountMoreThanZeroRecordsInTableAfterClickSearchBooks() {
+		booksPage.clickSearchBooks();
+		assertTrue(booksPage.countRowsInTable()>0);
+	}
+	
+	@Test
+	public void shouldCountNoRecordsInTableAfterPageLoadWithNoClickSearchBooksButton() {
+		assertEquals(new Integer(0),booksPage.countRowsInTable());
 	}
 	
 	@Test
