@@ -1,13 +1,13 @@
 <div id = "author-add-modal">
-	<form  novalidate name="myForm">
+	<form  novalidate name="anotherAuthor">
 		<div class="modal-header">
 			<h3 class="modal-title">Kolejny autor</h3>
 		</div>
 		<div class="modal-body">
 		<form name="author">
-            <input id = "authorFirstName" type="text" name="aFname" placeholder="imie autora" ng-model="author.firstName" required>
-            <input id = "authorLastName" type="text" name="aLname" placeholder="nazwisko autora" ng-model="author.lastName" required>
-            <button id = "addAnotherAuthorButton" ng-disabled="author.$invalid" ng-click = "closeMyModal()" class="btn btn-success">Dodaj</button>
+            <input type="text" name="aFname" placeholder="imie autora" ng-model="author.firstName" required>
+            <input type="text" name="aLname" placeholder="nazwisko autora" ng-model="author.lastName" required>
+            <button ng-disabled="author.$invalid" ng-click = "closeMyModal()" class="btn btn-success">Dodaj</button>
         </form>
 			
 		</div>
